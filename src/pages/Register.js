@@ -144,7 +144,7 @@ const Register = () => {
             localStorage.setItem('angchat-user', JSON.stringify(data.user));
           }
 
-          navigate("/");
+          navigate("/login");
 
         }
     }
