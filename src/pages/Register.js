@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState,useEffect } from 'react';
 import styled from 'styled-components';
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from 'react-router-dom';
@@ -144,7 +144,7 @@ const Register = () => {
             localStorage.setItem('angchat-user', JSON.stringify(data.user));
           }
 
-          navigate("/login");
+           navigate("/login");
 
         }
     }

@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ToastContainer, toast } from "react-toastify";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import { loginRoute } from '../utils/APIRoutes';
@@ -76,6 +76,7 @@ const FormContainer = styled.div`
   
 const Login = () => {
     const navigate = useNavigate()
+   // const location = useLocation()
 
     const toastOptions = {
         position: "top-right",
@@ -89,6 +90,14 @@ const Login = () => {
         username: "",
         password : ""
     })
+
+   // console.log(location.pathname)
+
+    // useEffect(() => {
+    //   if (localStorage.getItem('angchat-user')) {
+    //     navigate('/chat');
+    //   }
+    // });
 
     const validationHandler = () => {
       const { username, password } = values;
@@ -124,7 +133,7 @@ const Login = () => {
           }
           if (data.status === true) {
             localStorage.setItem('angchat-user', JSON.stringify(data.user));
-            navigate("/");
+            navigate('/chat')
           }
         }
     }
