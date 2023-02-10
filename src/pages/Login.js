@@ -91,17 +91,16 @@ const Login = () => {
     })
 
     const validationHandler = () => {
-        const { password,  username} = values
+      const { username, password } = values;
 
-        if (username.length ===  "" || password.length === "") {
-          toast.error(
-            "Username and password are both required required",
-            toastOptions
-          );
-          return false;
-        } 
-      
-          return true;
+      if (username === "") {
+        toast.error("Email and Password is required.", toastOptions);
+        return false;
+      } else if (password === "") {
+        toast.error("Email and Password is required.", toastOptions);
+        return false;
+      }
+      return true;
     }
 
     const submitHandler = async(event) => {
@@ -125,10 +124,8 @@ const Login = () => {
           }
           if (data.status === true) {
             localStorage.setItem('angchat-user', JSON.stringify(data.user));
+            navigate("/");
           }
-
-          navigate("/login");
-
         }
     }
 
